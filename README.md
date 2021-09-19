@@ -16,6 +16,11 @@ Create .env environment file
 
     $ cp env_dev .env
 
+# Configure Content
+
+    $ cp content/stickers_template.csv content/stickers.csv
+    $ nano content/stickers.csv
+
 # Customize (optional)
 
 Customize in Visual Studio Code (optional).

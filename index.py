@@ -41,8 +41,12 @@ def home() -> "html":
 # Product page route
 @app.route("/product")
 def product() -> "html":
+    with app.open_resource("content/stickers.csv") as f:
+        stickers_csv = f.read()
+
     return render_template(
         "product.html",
+        stickers_csv=stickers_csv,
     )
 
 
