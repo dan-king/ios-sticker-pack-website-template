@@ -24,6 +24,20 @@ print(f"FLASK_RUN_PORT: {os.environ.get('FLASK_RUN_PORT')}")
 app = Flask(__name__)
 
 
+# Homepage route
+@app.route("/")
+def root() -> "302":
+    return redirect("/home")
+
+
+@app.route("/home")
+def home() -> "html":
+
+    return render_template(
+        "home.html",
+    )
+
+
 # Start the Flask app if the current, active module is __main__.
 print(f"__name__: {__name__}")
 if __name__ == "__main__":
