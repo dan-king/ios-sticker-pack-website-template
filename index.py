@@ -38,6 +38,30 @@ def home() -> "html":
     )
 
 
+# Product page route
+@app.route("/product")
+def product() -> "html":
+    return render_template(
+        "product.html",
+    )
+
+
+# Privacy page route
+@app.route("/privacy")
+def privacy() -> "html":
+    return render_template(
+        "privacy.html",
+    )
+
+
+# Support page route
+@app.route("/support")
+def support() -> "html":
+    return render_template(
+        "support.html",
+    )
+
+
 # Start the Flask app if the current, active module is __main__.
 print(f"__name__: {__name__}")
 if __name__ == "__main__":
