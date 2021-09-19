@@ -12,6 +12,8 @@ Install dependencies.
 
     $ pip install -r requirements.txt
 
+# Customize (optional)
+
 Customize in Visual Studio Code (optional).
 
     $ open workspace.code-workspace
