@@ -3,14 +3,19 @@ A configurable Python Flask web template to fulfill the website requirements of 
 
 # Setup
 
-Install dependencies
+Set up a Python virtual env (optional).
+
+    $ python3 -m virtualenv venv
+    $ source venv/bin/activate
+
+Install dependencies.
 
     $ pip install -r requirements.txt
 
-Customize in Visual Studio Code (optional)
+Customize in Visual Studio Code (optional).
 
     $ open workspace.code-workspace
 
-Format code with PEP 8 compliant formatter 'black' (optional)
+Format code with PEP 8 compliant formatter 'black' (optional).
 
     $ black .
