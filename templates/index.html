@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ config.page_title }}</title>
+        <meta name="description" content="{{ config.page_title }}">
+        <link rel="stylesheet" type="text/css" href="./static/bootstrap-4.5.3-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="./static/DataTables/DataTables-1.10.23/css/dataTables.bootstrap4.min.css"/>
+        <script type="text/javascript" src="./static/DataTables/jQuery-3.3.1/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="./static/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./static/DataTables/DataTables-1.10.23/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="./static/DataTables/DataTables-1.10.23/js/dataTables.bootstrap4.min.js"></script>
+        <link href="./static/application.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="d-flex flex-column min-vh-100">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #234973;">
+                <div class="navbar-collapse w-25 order-1">
+                    <a class="navbar-brand" href="{{ config.header_link}}"><img src="./static/images/{{ config.header_logo }}" height="90"></a>
+                </div>
+                <div class="mx-auto order-2 text-center">
+                    <h3 style="color: white;"><a href="./start?cache_buster={{ range(1000000, 9999999) | random }}"><span style="color:white; text-decoration:none;">{{ config.page_title }}</span></a></h3>
+                    <h6 style="color: yellow;">{{ config.page_subtitle }}</h6>
+                </div>
+                <div class="navbar-collapse w-25 order-3">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./start?cache_buster={{ range(1000000, 9999999) | random }}">Home</a>
+                        </li>
+                        {% if session["id_token"] %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="./documentation?cache_buster={{ range(1000000, 9999999) | random }}">Documentation</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            {% if session["id_token"] %}
+                                <a class="nav-link" href="./logout?cache_buster={{ range(1000000, 9999999) | random }}">Logout</a>
+                            {% else %}
+                                <a class="nav-link" href="./login?cache_buster={{ range(1000000, 9999999) | random }}">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main class="flex-fill" style="padding-top:100px">
+                <div class="container-fluid text-center"  style="max-width: 1020px;">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </main>
+            <footer class="footer">
+                <div class="container-fluid text-center">
+                    <div class="row">
+                        <div class="col-sm-2 d-flex justify-content-start align-self-center">
+                            <a href="/view_logs?cache_buster={{ range(1000000, 9999999) | random }}">System Logs</a>
+                            &nbsp;|&nbsp;
+                            <a href="/view_errors?cache_buster={{ range(1000000, 9999999) | random }}">Error Logs</a>
+                        </div>
+                        <div class="col-sm-8">
+                            <div style="margin-top: 20px;">
+                                <a href="{{ config.footer_link }}"><img src="./static/images/{{ config.footer_logo }}" width="300"></a>        
+                            </div>
+                            <div style="margin-top: 20px;">
+                                Copyright &copy; {{ config.copyright_year }} {{ config.copyright_message }}
+                            </div>
+                        </div>
+                        <div class="col-sm-2 d-flex justify-content-end align-self-center">
+                            &nbsp;
+                            {% if session["id_token"] %}
+                                Logged in as "{{ session["user_display_name"] }}" in group "{{ session["group_name"] }}"
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
