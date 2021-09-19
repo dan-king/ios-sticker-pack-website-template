@@ -1,3 +1,4 @@
+import markdown
 import os
 from flask import (
     Flask,
@@ -53,8 +54,20 @@ def product() -> "html":
 # Privacy page route
 @app.route("/privacy")
 def privacy() -> "html":
+    with app.open_resource("content/privacy_policy.MD") as f:
+        privacy_policy_md = f.read()
+    print(f"privacy: privacy_policy_md: {privacy_policy_md}")
+    x = privacy_policy_md.decode('utf-8')
+    print(f"privacy: privacy_policy_md: {x}")
+
+    privacy_policy_html = markdown.markdown(privacy_policy_md)
+    print(f"privacy: privacy_policy_html: {privacy_policy_html}")
+    y = privacy_policy_html = markdown.markdown(x)
+    print(f"privacy: privacy_policy_html: {y}")
+
     return render_template(
         "privacy.html",
+        privacy_policy_html=privacy_policy_html,
     )
 
 
