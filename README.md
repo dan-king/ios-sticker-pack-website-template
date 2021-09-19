@@ -12,6 +12,10 @@ Install dependencies.
 
     $ pip install -r requirements.txt
 
+Create .env environment file
+
+    $ cp env_dev .env
+
 # Customize (optional)
 
 Customize in Visual Studio Code (optional).
@@ -21,3 +25,7 @@ Customize in Visual Studio Code (optional).
 Format code with PEP 8 compliant formatter 'black' (optional).
 
     $ black .
+
+# Run
+
+    $ python index.py
