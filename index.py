@@ -56,15 +56,8 @@ def product() -> "html":
 def privacy() -> "html":
     with app.open_resource("content/privacy_policy.MD") as f:
         privacy_policy_md = f.read()
-    print(f"privacy: privacy_policy_md: {privacy_policy_md}")
-    x = privacy_policy_md.decode('utf-8')
-    print(f"privacy: privacy_policy_md: {x}")
-
-    privacy_policy_html = markdown.markdown(privacy_policy_md)
-    print(f"privacy: privacy_policy_html: {privacy_policy_html}")
-    y = privacy_policy_html = markdown.markdown(x)
-    print(f"privacy: privacy_policy_html: {y}")
-
+    privacy_policy = privacy_policy_md.decode("utf-8")
+    privacy_policy_html = markdown.markdown(privacy_policy)
     return render_template(
         "privacy.html",
         privacy_policy_html=privacy_policy_html,
@@ -74,9 +67,10 @@ def privacy() -> "html":
 # Support page route
 @app.route("/support")
 def support() -> "html":
-    return render_template(
-        "support.html",
-    )
+    with app.open_resource("content/support.json") as f:
+        support = f.read()
+    support_json = support.decode("utf-8")
+    return render_template("support.html", support_json=support_json)
 
 
 # Start the Flask app if the current, active module is __main__.

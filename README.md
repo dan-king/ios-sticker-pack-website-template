@@ -21,6 +21,12 @@ Create .env environment file
     $ cp content/stickers_template.csv content/stickers.csv
     $ nano content/stickers.csv
 
+    $ cp content/privacy_policy_template.MD content/privacy_policy.MD
+    $ nano content/privacy_policy.MD
+
+    $ cp content/support_template.json content/support.json
+    $ nano content/support.json
+
 # Customize (optional)
 
 Customize in Visual Studio Code (optional).
