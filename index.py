@@ -1,4 +1,5 @@
 import markdown
+import pandas as pd
 import os
 from flask import (
     Flask,
@@ -42,12 +43,31 @@ def home() -> "html":
 # Product page route
 @app.route("/product")
 def product() -> "html":
-    with app.open_resource("content/stickers.csv") as f:
-        stickers_csv = f.read()
+    stickers_csv = pd.read_csv("content/stickers.csv")
+    print(f"stickers_csv: {stickers_csv}")
+    sticker_list = []
+    for index, row in stickers_csv.iterrows():
+        print(row['Sticker'], row['License'])
+        sticker = row['Sticker']
+        license = row['License']
+        license_page = row['license_page']
+        copyright_year = row['copyright_year']
+        copyright_name = row['copyright_name']
+        copyright_link = row['copyright_user_link']
+        s = [
+            sticker,
+            license,
+            license_page,
+            copyright_year,
+            copyright_name,
+            copyright_link
+        ]
+        sticker_list.append(s)
 
     return render_template(
         "product.html",
         stickers_csv=stickers_csv,
+        sticker_list=sticker_list,
     )
 
 
