@@ -1,0 +1,31 @@
+body {
+    background-color: #f6f7f7;
+}
+.footer {
+    color: #717171;
+    background-color: #dcdcdc;
+}
+.tab_container {
+    border: 2px solid #e8e9eb;
+    border-radius: .9rem;
+}
+.nav-tabs .nav-link {
+    border: 0px solid transparent;
+    border-top-left-radius: .9rem;
+    border-top-right-radius: .9rem;
+}
+.tab_bg_dark {
+    color: white!important;
+    background-color: #007bff!important;
+    font-weight: bold;
+}
+.tab_bg_light {
+    color: #007bff!important;
+    background-color: #ebf3fc!important;
+    font-weight: bold;
+}
+.scrollBox {
+    height:150px;
+    overflow-y: scroll;
+    border: 1px solid grey;
+}
