@@ -17,12 +17,31 @@
         <link href="./static/application.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <ul>
-            <li><a href="/product">Product</a></li>
-            <li><a href="/privacy">Privacy</a></li>
-            <li><a href="/support">Support</a></li>
-        </ul>
-        {% block body %}
-        {% endblock %}
+        <div class="d-flex flex-column min-vh-100">
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #007bff;">
+                <div class="mx-auto order-2 text-center">
+                    <h3 style="color: white;"><a href="./start?cache_buster={{ range(1000000, 9999999) | random }}"><span style="color:white; text-decoration:none;">iOS Sticker Pack Website Template</span></a></h3>
+                </div>
+            </nav>
+            <main class="flex-fill" style="padding-top:100px">
+                <div>
+                    <div class="list-group list-group-horizontal pb-5">
+                        <span class="list-group-item flex-fill"><a href="./product">Product</a></span>
+                        <span class="list-group-item flex-fill"><a href="./privacy">Privacy</a></span>
+                        <span class="list-group-item flex-fill"><a href="./support">Support</a></span>
+                    </div>
+                
+                </div>
+                <div class="container-fluid text-center"  style="max-width: 1020px;">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </main>
+            <footer class="footer">
+                <div class="container-fluid text-center">
+                    Copyright &copy; 2021 Viewpoint Technical LLC
+                </div>
+            </footer>
+        </div>
     </body>
 </html>
