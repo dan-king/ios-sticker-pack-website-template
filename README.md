@@ -14,24 +14,20 @@ Install dependencies.
 
 Create .env environment file
 
-    $ cp env_dev .env
+    $ cp env_prod .env
 
-# Configure Content
-
-    $ cp content/stickers_template.csv content/stickers.csv
-    $ nano content/stickers.csv
-
-    $ cp content/privacy_policy_template.MD content/privacy_policy.MD
-    $ nano content/privacy_policy.MD
-
-    $ cp content/support_template.json content/support.json
-    $ nano content/support.json
-
-# Customize (optional)
+# Customize
 
 Customize in Visual Studio Code (optional).
 
     $ open workspace.code-workspace
+
+Edit content files
+    $ nano content/stickers.csv
+
+    $ nano content/privacy_policy.MD
+
+    $ nano content/support.json
 
 Format code with PEP 8 compliant formatter 'black' (optional).
 
