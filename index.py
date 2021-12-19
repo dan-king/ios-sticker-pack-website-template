@@ -1,3 +1,4 @@
+import json
 import markdown
 import pandas as pd
 import os
@@ -91,8 +92,12 @@ def privacy() -> "html":
 def support() -> "html":
     with app.open_resource("content/support.json") as f:
         support = f.read()
-    support_json = support.decode("utf-8")
-    return render_template("support.html", support_json=support_json)
+
+    support_json = json.loads(support)
+    support_email = support_json["Support Email"]
+    support_phone = support_json["Support Phone Number"]
+
+    return render_template("support.html", support_email=support_email, support_phone=support_phone)
 
 
 # Start the Flask app if the current, active module is __main__.

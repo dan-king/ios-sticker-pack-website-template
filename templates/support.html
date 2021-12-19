@@ -3,7 +3,38 @@
 {% block body %}
 
 <h1>Support Page</h1>
-
-{{ support_json }}
-
+<div class="text-center">
+<table cellpadding="10" cellspacing="10">
+    <tbody>
+        <tr>
+            <td align="right">
+                Support Email:
+            </td>
+            <td>
+                {{ support_email }}
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                Support Phone:
+            </td>
+            <td>
+                {{ support_phone }}
+            </td>
+        </tr>
+        {% for row in support_json %}
+        <tr>
+            <td>
+                {{ row }}
+            </td>
+            <td>
+                {{ row.key }}
+                {{ row.field1 }}
+                {{ row.field2 }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
 {% endblock body %}
