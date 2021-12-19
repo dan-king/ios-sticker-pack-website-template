@@ -48,14 +48,14 @@ def product() -> "html":
     print(f"stickers_csv: {stickers_csv}")
     sticker_list = []
     for index, row in stickers_csv.iterrows():
-        print(row['Sticker'], row['License'])
-        sticker = row['Sticker']
-        image = row['Image']
-        license = row['License']
-        license_page = row['license_page']
-        copyright_year = row['copyright_year']
-        copyright_name = row['copyright_name']
-        copyright_link = row['copyright_user_link']
+        print(row["Sticker"], row["License"])
+        sticker = row["Sticker"]
+        image = row["Image"]
+        license = row["License"]
+        license_page = row["license_page"]
+        copyright_year = row["copyright_year"]
+        copyright_name = row["copyright_name"]
+        copyright_link = row["copyright_user_link"]
         s = [
             sticker,
             image,
@@ -63,7 +63,7 @@ def product() -> "html":
             license_page,
             copyright_year,
             copyright_name,
-            copyright_link
+            copyright_link,
         ]
         sticker_list.append(s)
 
@@ -97,7 +97,9 @@ def support() -> "html":
     support_email = support_json["Support Email"]
     support_phone = support_json["Support Phone Number"]
 
-    return render_template("support.html", support_email=support_email, support_phone=support_phone)
+    return render_template(
+        "support.html", support_email=support_email, support_phone=support_phone
+    )
 
 
 # Start the Flask app if the current, active module is __main__.
